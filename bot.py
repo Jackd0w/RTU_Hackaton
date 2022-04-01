@@ -26,8 +26,9 @@ def id_reader(message):
 @bot.message_handler(commands=['start'])
 def start_handler(message):
     global ids # массив с айди пользователей, которые допущены
-    bot.send_message(message.chat.id, "Привет, введи код, полученный на сайте:")
-    if  #исправь на id, когда закончишь
+    mesg = bot.send_message(message.chat.id, "Привет, введи код, полученный на сайте:")
+    if message#исправь на id, когда закончишь
+        bot.register_next_step_handler(mesg, id_reader)
         bot.send_message(message.chat.id, 'Ошибся адресом, дружок')
     else:
         markup = types.ReplyKeyboardMarkup(resize_keyboard=True)
