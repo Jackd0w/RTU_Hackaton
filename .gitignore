@@ -1,1 +1,6 @@
-config.py
+__pycache__/
+app.sqlite
+.cache
+*.pyc
+env
+venv
