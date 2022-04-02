@@ -1,7 +1,5 @@
-from markupsafe import Markup
 import telebot
 from telebot import types
-
 
 '''
 TODO
@@ -15,25 +13,16 @@ bot = telebot.TeleBot(token, parse_mode=None, )
 
 ids = ["665659475"]
 
-@bot.message_handler(content_types=['text'])
-def id_reader(message):
-    if message.text in ids:
-        return True
-    else:
-        return False
+
 
 @bot.message_handler(commands=['start'])
 def start_handler(message):
-    global ids # массив с айди пользователей, которые допущены
-    bot.send_message(message.chat.id, "Привет, введи код, полученный на сайте:")
-    if  #исправь на id, когда закончишь
-        bot.send_message(message.chat.id, 'Ошибся адресом, дружок')
-    else:
-        markup = types.ReplyKeyboardMarkup(resize_keyboard=True)
-        btn1 = types.KeyboardButton("🤬 Дедлайны")
-        btn2 = types.KeyboardButton("❓ Что запланировано на сегодня?")
-        markup.add(btn1, btn2)
-        bot.send_message(message.chat.id, text="Привет, {0.first_name}! Я бот, который поможет тебе не потеряться среди вечно горящих дедлайнов".format(message.from_user), 
+    
+    markup = types.ReplyKeyboardMarkup(resize_keyboard=True)
+    btn1 = types.KeyboardButton("🤬 Дедлайны")
+    btn2 = types.KeyboardButton("❓ Что запланировано на сегодня?")
+    markup.add(btn1, btn2)
+    bot.send_message(message.chat.id, text="Привет, {0.first_name}! Я бот, который поможет тебе не потеряться среди вечно горящих дедлайнов".format(message.from_user), 
                         reply_markup=markup)
 
 
